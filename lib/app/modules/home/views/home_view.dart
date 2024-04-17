@@ -1,3 +1,5 @@
+import 'package:expense_tracker/app/modules/home/views/widgets/add_expense.dart';
+import 'package:expense_tracker/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -13,12 +15,25 @@ class HomeView extends GetView<HomeController> {
         title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Center(
+        child: TextButton(onPressed: () {}, child: const Text('data')),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Get.bottomSheet(
+            SizedBox(
+                width: double.infinity,
+                // height: 400,
+                // color: Colors.white,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AddExpense(controller: controller),
+                  ],
+                )),
+            enableDrag: true,
+            isScrollControlled: true,
+            backgroundColor: Colors.white);
+      }),
     );
   }
 }
